@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Upcoming episodes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="show-wrapper" ng-controller="getMovie">
+    <div class="show-box" ng-repeat="show in list | orderBy:'time'">
+            <a href="http://www.imdb.com/title/{{show.show.ids.imdb}}"><img src="{{show.poster_path}}"></a>
+            <h2><a href="http://www.imdb.com/title/{{show.show.ids.imdb}}">{{show.show.title}}</a></h2>
+            <span ng-if="show.episode">Season {{show.episode.season}} - Episode {{show.episode.number}}</span>
+            <p><span>Next episode:</span> </br>{{show.first_aired | countdown}}</p>
+    </div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
